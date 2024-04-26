@@ -9,15 +9,26 @@ import { PlantaService } from '../planta.service';
 })
 export class PlantaListComponent implements OnInit {
   plantas: Array<Planta> = [];
+  cantidadPlantasInterior: number = 0;
+  cantidadPlantasExterior: number = 0;
 
   constructor(private plantaService: PlantaService) {}
 
   getPlantas(): void {
     this.plantaService.getPlantas().subscribe((plantas) => {
       this.plantas = plantas;
-      console.log(plantas)
-      console.log(this.plantas)
+      this.getTipoPlantas();
     });
+  }
+
+  getTipoPlantas(): void {
+    for (let planta of this.plantas) {
+      if (planta.tipo == 'Interior') {
+        this.cantidadPlantasInterior++;
+      } else {
+        this.cantidadPlantasExterior++;
+      }
+    }
   }
 
   ngOnInit() {
