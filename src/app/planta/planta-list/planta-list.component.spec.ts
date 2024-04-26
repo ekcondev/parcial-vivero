@@ -47,19 +47,19 @@ describe('PlantaListComponent', () => {
   });
 
   // Comprobar que se crea la tabla
-  it('Component has a table', () => {
+  it('should has a table', () => {
     expect(debug.query(By.css('tbody')).childNodes.length).toBeGreaterThan(0);
   });
 
   // Comprobar que la tabla tiene el encabezado
-  it('Component table has a thead', () => {
+  it('should has a table with a thead', () => {
     const tablaElement: HTMLElement = fixture.nativeElement;
     const encabezado = tablaElement.querySelector('thead');
     expect(encabezado).toBeTruthy();
   });
 
   // Comprobar que la tabla tiene 3 filas
-  it('Component table has 4 tr elements (head and rows with data)', () => {
+  it('should have a table with 4 tr elements (head and rows with data)', () => {
     const tablaElement: HTMLElement = fixture.nativeElement;
     const filas = tablaElement.querySelectorAll('tr');
     expect(filas.length).toBe(4);
