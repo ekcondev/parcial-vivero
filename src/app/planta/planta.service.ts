@@ -4,15 +4,13 @@ import { Planta } from './planta';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PlantaService {
+  private apiUrl: string = environment.baseUrl;
 
-    private apiUrl: string = environment.baseUrl;
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) { }
-  
-    getPlantas(): Observable<Planta[]> {
-      return this.http.get<Planta[]>(this.apiUrl);
-    }
-
+  getPlantas(): Observable<Planta[]> {
+    return this.http.get<Planta[]>(this.apiUrl);
+  }
 }
